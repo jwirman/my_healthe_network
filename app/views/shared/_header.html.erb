@@ -1,0 +1,9 @@
+<header class="page_header">
+  <nav id="utility">
+    <% if current_user %>
+      <p>Welcome <strong><%= current_user %>:</strong>
+        <%= link_to "[Sign Out]", destroy_user_session_path, method: :delete %>
+      </p>
+    <% end %>
+  </nav>
+</header>

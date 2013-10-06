@@ -7,10 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
 
-<%= yield %>
+  <%= render "shared/header" %>
+
+  <% if flash[:notice] %><p class="message notice"><%= notice %></p><% end %>
+  <% if flash[:alert] %><p class="message alert"><%= alert %></p><% end %>
+
+  <section id="main">
+    <%= yield %>
+  </section>
+
+  <%= render 'shared/footer' %>
 
 </body>
 </html>

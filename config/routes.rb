@@ -1,7 +1,10 @@
 MyHealtheNetwork::Application.routes.draw do
 
   devise_for :users
-  root 'site#index'
+  authenticated :user do
+    root 'site#index', as: :authenticated_root
+  end
+  root to: redirect('/users/sign_in')
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
