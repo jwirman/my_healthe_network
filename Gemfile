@@ -3,8 +3,10 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.0'
 
-gem 'mysql2'
 gem "devise"
+gem 'heroku', '~> 2.24.0'
+gem 'mysql2'
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
