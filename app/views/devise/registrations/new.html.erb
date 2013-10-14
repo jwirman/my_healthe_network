@@ -1,16 +1,20 @@
-<h2>Sign up</h2>
+<h2>Create an Account</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <%= f.input :email, :autofocus => true %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :cell_phone %>
+  <%= f.input :dob, label: 'Date of Birth' %>
+  <%= f.input :password %>
+  <%= f.input :password_confirmation %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <% resource.build_address unless resource.address %>
+  <%= f.fields_for :address do |builder| %>
+    <%= render "shared/address", f: builder %>
+  <% end %>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

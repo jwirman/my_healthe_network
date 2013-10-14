@@ -1,0 +1,6 @@
+<h3>Address</h3>
+<%= f.input :line1 %>
+<%= f.input :line2 %>
+<%= f.input :city %>
+<%= f.input :state, collection: States::STATE_CODES %>
+<%= f.input :zip %>

@@ -7,6 +7,7 @@ gem "devise"
 gem 'heroku', '~> 2.24.0'
 gem 'mysql2'
 gem 'pg'
+gem "simple_form", "~> 3.0.0"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
