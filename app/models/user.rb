@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :address
+  has_many :meds, through: :users_meds
 
   validates :email, presence: true
   validates :first_name, presence: true

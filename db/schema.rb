@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131013190229) do
+ActiveRecord::Schema.define(version: 20131027164941) do
 
   create_table "addresses", force: true do |t|
     t.integer  "user_id"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20131013190229) do
     t.string   "city"
     t.string   "state"
     t.string   "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "meds", force: true do |t|
+    t.string   "name"
+    t.string   "strength"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -45,5 +52,16 @@ ActiveRecord::Schema.define(version: 20131013190229) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "users_meds", force: true do |t|
+    t.integer  "users_id"
+    t.integer  "meds_id"
+    t.string   "freq"
+    t.integer  "num_per_dose"
+    t.datetime "start"
+    t.integer  "num_doses"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
