@@ -8,4 +8,6 @@ MyHealtheNetwork::Application.routes.draw do
   end
   root to: redirect('/users/sign_in')
 
+  ActiveAdmin.routes(self)
+
 end

@@ -1,9 +1,12 @@
 <header class="page_header">
   <nav id="utility">
-    <%= link_to '[home]', root_path %>
     <% if current_user %>
-      <p>Welcome <strong><%= current_user %>:</strong>
-        <%= link_to "[Sign Out]", destroy_user_session_path, method: :delete %>
+      <p>Welcome <strong><%= current_user %></strong>
+      <%= link_to '[home]', root_path %>
+      <% if current_user.is_admin? %>
+        <%= link_to '[admin]', admin_root_path %>
+      <% end %>
+      <%= link_to "[sign out]", destroy_user_session_path, method: :delete %>
       </p>
     <% end %>
   </nav>
