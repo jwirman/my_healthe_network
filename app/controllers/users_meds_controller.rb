@@ -2,7 +2,7 @@ class UsersMedsController < ApplicationController
   before_action :set_users_med, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users_meds = current_user.meds
+    @users_meds = current_user.users_meds
   end
 
   def show
@@ -17,6 +17,7 @@ class UsersMedsController < ApplicationController
 
   def create
     @users_med = UsersMed.new(users_med_params)
+    @users_med.user_id = current_user.id
 
     respond_to do |format|
       if @users_med.save
@@ -52,6 +53,6 @@ class UsersMedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def users_med_params
-      params.require(:users_med).permit(:freq, :freq_unit, :is_tab, :num_per_dose, :start, :num_doses)
+      params.require(:users_med).permit(:med_id, :freq, :freq_unit, :is_tab, :num_per_dose, :start, :num_doses)
     end
 end

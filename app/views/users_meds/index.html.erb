@@ -3,12 +3,13 @@
 <table>
   <thead>
     <tr>
-      <th>Freq</th>
-      <th>Freq unit</th>
-      <th>Is tab</th>
-      <th>Num per dose</th>
-      <th>Start</th>
-      <th>Num doses</th>
+      <th>Medication</th>
+      <th>Frequency</th>
+      <th>Frequency Unit</th>
+      <th>Is tab?</th>
+      <th>Number per dose</th>
+      <th>Start Date/Time</th>
+      <th>Number of doses</th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,6 +19,7 @@
   <tbody>
     <% @users_meds.each do |users_med| %>
       <tr>
+        <td><%= users_med.med %></td>
         <td><%= users_med.freq %></td>
         <td><%= users_med.freq_unit %></td>
         <td><%= users_med.is_tab %></td>
@@ -34,4 +36,4 @@
 
 <br>
 
-<%= link_to 'New Users med', new_users_med_path %>
+<%= link_to 'New Medication', new_users_med_path %>
