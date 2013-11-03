@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 20131103180529) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "users_meds", force: true do |t|
-    t.integer  "users_id"
-    t.integer  "meds_id"
+    t.integer  "user_id"
+    t.integer  "med_id"
     t.string   "freq"
     t.string   "freq_unit"
     t.boolean  "is_tab"

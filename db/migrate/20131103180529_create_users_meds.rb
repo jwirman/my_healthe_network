@@ -1,8 +1,8 @@
 class CreateUsersMeds < ActiveRecord::Migration
   def change
     create_table :users_meds do |t|
-      t.references :users
-      t.references :meds
+      t.references :user
+      t.references :med
       t.string :freq
       t.string :freq_unit
       t.boolean :is_tab

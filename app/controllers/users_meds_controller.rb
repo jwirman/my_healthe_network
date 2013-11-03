@@ -2,7 +2,7 @@ class UsersMedsController < ApplicationController
   before_action :set_users_med, only: [:show, :edit, :update, :destroy]
 
   def index
-    @users_meds = UsersMed.all
+    @users_meds = current_user.meds
   end
 
   def show
