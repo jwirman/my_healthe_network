@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131028161546) do
+ActiveRecord::Schema.define(version: 20131103180529) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -40,7 +40,8 @@ ActiveRecord::Schema.define(version: 20131028161546) do
   end
 
   create_table "meds", force: true do |t|
-    t.string   "name"
+    t.string   "generic_name"
+    t.string   "brand_name"
     t.string   "strength"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -73,6 +74,8 @@ ActiveRecord::Schema.define(version: 20131028161546) do
     t.integer  "users_id"
     t.integer  "meds_id"
     t.string   "freq"
+    t.string   "freq_unit"
+    t.boolean  "is_tab"
     t.integer  "num_per_dose"
     t.datetime "start"
     t.integer  "num_doses"

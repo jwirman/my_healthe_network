@@ -4,6 +4,8 @@ class CreateUsersMeds < ActiveRecord::Migration
       t.references :users
       t.references :meds
       t.string :freq
+      t.string :freq_unit
+      t.boolean :is_tab
       t.integer :num_per_dose
       t.datetime :start
       t.integer :num_doses

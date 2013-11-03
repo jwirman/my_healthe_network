@@ -1,0 +1,37 @@
+<h1>Listing users_meds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Freq</th>
+      <th>Freq unit</th>
+      <th>Is tab</th>
+      <th>Num per dose</th>
+      <th>Start</th>
+      <th>Num doses</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users_meds.each do |users_med| %>
+      <tr>
+        <td><%= users_med.freq %></td>
+        <td><%= users_med.freq_unit %></td>
+        <td><%= users_med.is_tab %></td>
+        <td><%= users_med.num_per_dose %></td>
+        <td><%= users_med.start %></td>
+        <td><%= users_med.num_doses %></td>
+        <td><%= link_to 'Show', users_med %></td>
+        <td><%= link_to 'Edit', edit_users_med_path(users_med) %></td>
+        <td><%= link_to 'Destroy', users_med, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Users med', new_users_med_path %>

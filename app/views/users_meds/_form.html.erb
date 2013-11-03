@@ -1,0 +1,16 @@
+<%= simple_form_for(@users_med) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :freq %>
+    <%= f.input :freq_unit %>
+    <%= f.input :is_tab %>
+    <%= f.input :num_per_dose %>
+    <%= f.input :start %>
+    <%= f.input :num_doses %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

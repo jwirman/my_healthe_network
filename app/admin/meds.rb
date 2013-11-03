@@ -1,6 +1,7 @@
 ActiveAdmin.register Med do
   index do
-    column :name
+    column :generic_name
+    column :brand_name
     column :strength
     default_actions
   end
@@ -9,14 +10,15 @@ ActiveAdmin.register Med do
 
   form do |f|
     f.inputs "Details" do
-      f.input :name
+      f.input :generic_name
+      f.input :brand_name
       f.input :strength
     end
     f.actions
   end
   controller do
     def permitted_params
-      params.permit med: [:name, :strength]
+      params.permit med: [:generic_name, :brand_name, :strength]
     end
   end
 

@@ -1,6 +1,6 @@
 MyHealtheNetwork::Application.routes.draw do
 
-  resources :meds
+  resources :users_meds
 
   devise_for :users, controllers: { registrations: "registrations" }
   authenticated :user do

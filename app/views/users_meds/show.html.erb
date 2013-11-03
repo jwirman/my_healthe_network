@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Freq:</strong>
+  <%= @users_med.freq %>
+</p>
+
+<p>
+  <strong>Freq unit:</strong>
+  <%= @users_med.freq_unit %>
+</p>
+
+<p>
+  <strong>Is tab:</strong>
+  <%= @users_med.is_tab %>
+</p>
+
+<p>
+  <strong>Num per dose:</strong>
+  <%= @users_med.num_per_dose %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @users_med.start %>
+</p>
+
+<p>
+  <strong>Num doses:</strong>
+  <%= @users_med.num_doses %>
+</p>
+
+<%= link_to 'Edit', edit_users_med_path(@users_med) %> |
+<%= link_to 'Back', users_meds_path %>
