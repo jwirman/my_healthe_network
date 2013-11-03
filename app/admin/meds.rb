@@ -16,7 +16,7 @@ ActiveAdmin.register Med do
   end
   controller do
     def permitted_params
-      params.permit admin_user: [:name, :strength]
+      params.permit med: [:name, :strength]
     end
   end
 
