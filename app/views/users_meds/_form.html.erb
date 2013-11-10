@@ -3,8 +3,8 @@
 
   <div class="form-inputs">
     <%= f.input :med_id, collection: Med.all %>
-    <%= f.input :freq, label: 'Frequency' %>
-    <%= f.input :freq_unit, label: 'Frequency Unit' %>
+    <%= f.input :freq, label: 'Frequency', collection: Med::FREQUENCIES %>
+    <%= f.input :freq_unit, label: 'Frequency Unit', collection: Med::FREQUENCY_UNITS %>
     <%= f.input :is_tab, label: 'Check if tablet/capsule' %>
     <%= f.input :num_per_dose, label: 'Number per dose' %>
     <%= f.input :start, label: 'Start Date/Time' %>
