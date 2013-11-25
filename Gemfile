@@ -51,3 +51,8 @@ end
 group :production do
   gem 'rails_12factor'
 end
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+end
