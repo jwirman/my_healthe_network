@@ -19,7 +19,7 @@ class UsersMedsControllerTest < ActionController::TestCase
 
   test "should create users_med" do
     assert_difference('UsersMed.count') do
-      post :create, users_med: { freq: @users_med.freq, freq_unit: @users_med.freq_unit, is_tab: @users_med.is_tab, num_doses: @users_med.num_doses, num_per_dose: @users_med.num_per_dose, start: @users_med.start }
+      post :create, users_med: { freq: @users_med.freq, freq_unit: @users_med.freq_unit, num_doses: @users_med.num_doses, num_per_dose: @users_med.num_per_dose, start: @users_med.start }
     end
 
     assert_redirected_to users_med_path(assigns(:users_med))
@@ -36,7 +36,7 @@ class UsersMedsControllerTest < ActionController::TestCase
   end
 
   test "should update users_med" do
-    patch :update, id: @users_med, users_med: { freq: @users_med.freq, freq_unit: @users_med.freq_unit, is_tab: @users_med.is_tab, num_doses: @users_med.num_doses, num_per_dose: @users_med.num_per_dose, start: @users_med.start }
+    patch :update, id: @users_med, users_med: { freq: @users_med.freq, freq_unit: @users_med.freq_unit, num_doses: @users_med.num_doses, num_per_dose: @users_med.num_per_dose, start: @users_med.start }
     assert_redirected_to users_med_path(assigns(:users_med))
   end
 
