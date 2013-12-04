@@ -58,6 +58,6 @@ class UsersMedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def users_med_params
-      params.require(:users_med).permit(:med_id, :freq, :freq_unit, :num_per_dose, :start, :num_doses)
+      params.require(:users_med).permit(:med_id, :freq, :freq_unit, :num_per_dose, :start, :num_doses, :first_dose, :second_dose, :third_dose, :fourth_dose, :fifth_dose, :sixth_dose, :window)
     end
 end

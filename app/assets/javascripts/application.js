@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.ui.datepicker
 //= require utilities
-//= require med_select
-//= require_tree .
+//= require new_medication_form
+//= require datepicker

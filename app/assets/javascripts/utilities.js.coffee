@@ -5,8 +5,8 @@
 #   class exports.Baz
 #
 # namespace 'Foo.Baz', (exports) ->
-#  exports.alertFoo = ->
-#    alert 'foo'
+#   exports.alertFoo = ->
+#     alert 'foo'
 
 window.namespace = (target, name, block) ->
   [target, name, block] = [(if typeof exports isnt 'undefined' then exports else window), arguments...] if arguments.length < 3

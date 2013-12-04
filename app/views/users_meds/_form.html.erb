@@ -13,11 +13,10 @@
     <%= f.input :fifth_dose,  ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
     <%= f.input :sixth_dose,  ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
     <%= f.input :window, label: 'Window (min)', collection: Med::WINDOWS, include_blank: false %>
-    <%= f.input :start, label: 'Start Date' %>
+    <%= f.input :start, label: 'Start Date', as: :string, input_html: { class: :datepicker } %>
     <%= f.input :num_doses, label: 'Number of doses' %>
   </div>
-  <p>Based on number of doses, your medication will run out on:</p>
-
+  <br />
   <div class="form-actions">
     <%= f.button :submit, 'Add Medication to List' %>
   </div>
