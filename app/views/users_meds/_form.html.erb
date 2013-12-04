@@ -6,7 +6,14 @@
     <%= f.input :freq, label: 'Frequency', collection: Med::FREQUENCIES %>
     <%= f.input :freq_unit, label: 'Frequency Unit', collection: Med::FREQUENCY_UNITS %>
     <%= f.input :num_per_dose, label: 'Number per dose' %>
-    <%= f.input :start, label: 'Start Date/Time' %>
+    <%= f.input :first_dose,  ampm: true, include_blank: true %>
+    <%= f.input :second_dose, ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
+    <%= f.input :third_dose,  ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
+    <%= f.input :fourth_dose, ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
+    <%= f.input :fifth_dose,  ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
+    <%= f.input :sixth_dose,  ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
+    <%= f.input :window, label: 'Window (min)', collection: Med::WINDOWS, include_blank: false %>
+    <%= f.input :start, label: 'Start Date' %>
     <%= f.input :num_doses, label: 'Number of doses' %>
   </div>
   <p>Based on number of doses, your medication will run out on:</p>
