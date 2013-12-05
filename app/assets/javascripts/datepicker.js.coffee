@@ -5,4 +5,4 @@ namespace 'Medlist', (exports) ->
       dateFormat: "yy-mm-dd"
       showOn: "both"
       buttonImageOnly: true
-      buttonImage: "/assets/calendar.gif"
+      buttonImage: image_path("calendar.gif")

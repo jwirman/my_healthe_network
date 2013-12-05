@@ -15,5 +15,6 @@
 //= require turbolinks
 //= require jquery.ui.datepicker
 //= require utilities
+//= require image_helpers
 //= require new_medication_form
 //= require datepicker
