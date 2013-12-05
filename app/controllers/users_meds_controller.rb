@@ -1,4 +1,5 @@
 class UsersMedsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_users_med, only: [:show, :edit, :update, :destroy]
 
   def index
