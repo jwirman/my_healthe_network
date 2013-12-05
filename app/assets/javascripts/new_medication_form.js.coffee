@@ -14,6 +14,9 @@ namespace 'Medlist', (exports) ->
     init: ->
       @updateUnits()
       @updateDoses()
+      if (@freqUnitSelect.val() == 'Daily') and (m = @freqSelect.val().match(/time/))
+        num = m.input.substring(0,m.index).trim()
+        @toggleDoses(num)
 
     updateUnits: ->
       @freqSelect.change =>

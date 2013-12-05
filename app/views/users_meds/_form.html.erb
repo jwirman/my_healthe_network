@@ -1,3 +1,12 @@
+<%= content_for :javascript do %>
+  <% javascript_tag do %>
+    $(function() {
+      new window.Medlist.CustomFrequency();
+      window.Medlist.datePicker();
+    });
+  <% end %>
+<% end %>
+
 <%= simple_form_for(@users_med) do |f| %>
   <%= f.error_notification %>
 

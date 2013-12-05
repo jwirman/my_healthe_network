@@ -1,12 +1,3 @@
-<%= content_for :javascript do %>
-  <% javascript_tag do %>
-    $(function() {
-      new window.Medlist.CustomFrequency();
-      window.Medlist.datePicker();
-    });
-  <% end %>
-<% end %>
-
 <h1>New Medication</h1>
 
 <%= render 'form' %>
