@@ -52,8 +52,14 @@ group :production do
   gem 'rails_12factor'
 end
 
+# needed in dev group for fixture replacement
+gem 'factory_girl_rails'
+
 group :test do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'capybara-webkit'
+  #gem 'selenium-webdriver'
+  gem "database_cleaner", "~> 1.2.0"
 end

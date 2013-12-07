@@ -1,23 +1,25 @@
 require "spec_helper"
 
-describe 'the signup process' do
-
-  before :each do
-    User.create(first_name: 'Justin',
-                last_name: 'Wirman',
-                email: 'jwirman@gmail.com',
-                password: 'password',
-                password_confirmation: 'password')
-  end
-
-  it 'signs me in' do
-    visit(new_user_session_path)
-    within("#main") do
-      fill_in 'Email', :with => 'jwirman@gmail.com'
-      fill_in 'Password', :with => 'password'
-    end
-    click_button 'Sign in'
+feature 'user signs in' do
+  scenario 'with valid email and password' do
+    sign_in
     expect(page).to have_content('Signed in successfully.')
   end
+end
 
+feature 'user signs up' do
+  scenario 'with valid email and password' do
+    sign_up_with 'valid@example.com', 'password'
+    expect(page).to have_content('Welcome! You have signed up successfully.')
+  end
+
+  scenario 'with invalid email' do
+    sign_up_with 'invalid_email', 'password'
+    expect(page).to have_content('Email is invalid')
+  end
+
+  scenario 'with blank password' do
+    sign_up_with 'valid@example.com', ''
+    expect(page).to have_content("Password can't be blank")
+  end
 end
