@@ -56,8 +56,8 @@ end
 gem 'factory_girl_rails'
 
 group :test do
-  gem 'rspec'
   gem 'rspec-rails'
+  gem 'shoulda-matchers'
   gem 'capybara'
   gem 'capybara-webkit'
   #gem 'selenium-webdriver'
