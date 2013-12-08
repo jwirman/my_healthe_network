@@ -81,84 +81,104 @@ describe UsersMedsController do
         expect(assigns(:users_med)).to eq(users_med)
       end
     end
-  end
+  end # edit
 
-#  describe "POST create" do
-#    describe "with valid params" do
-#      it "creates a new Blah" do
-#        expect {
-#          post :create, {:blah => valid_attributes}, valid_session
-#        }.to change(Blah, :count).by(1)
-#      end
-#
-#      it "assigns a newly created blah as @blah" do
-#        post :create, {:blah => valid_attributes}, valid_session
-#        assigns(:blah).should be_a(Blah)
-#        assigns(:blah).should be_persisted
-#      end
-#
-#      it "redirects to the created blah" do
-#        post :create, {:blah => valid_attributes}, valid_session
-#        response.should redirect_to(Blah.last)
-#      end
-#    end
-#
-#    describe "with invalid params" do
-#      it "assigns a newly created but unsaved blah as @blah" do
-#        # Trigger the behavior that occurs when invalid params are submitted
-#        Blah.any_instance.stub(:save).and_return(false)
-#        post :create, {:blah => { "name" => "invalid value" }}, valid_session
-#        assigns(:blah).should be_a_new(Blah)
-#      end
-#
-#      it "re-renders the 'new' template" do
-#        # Trigger the behavior that occurs when invalid params are submitted
-#        Blah.any_instance.stub(:save).and_return(false)
-#        post :create, {:blah => { "name" => "invalid value" }}, valid_session
-#        response.should render_template("new")
-#      end
-#    end
-#  end
-#
+  let(:valid_attributes) { { "med_id"    => 1,
+                             "freq"      => "One time",
+                             "freq_unit" => "Daily",
+                             "start"     => Date.today,
+                             "window"    => 5,
+                             "num_doses" => 7 } }
+
+  describe "POST create" do
+    context 'when logged out' do
+      it "should redirect to the sign in page" do
+        sign_in nil
+        post :create, {:users_med => valid_attributes}
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
+    context 'when logged in' do
+      before :each do
+        user = sign_in
+        user.should_receive(:id).once.and_return 1
+      end
+
+      describe "with valid params" do
+        it "creates a new UsersMed" do
+          expect {
+            post :create, {:users_med => valid_attributes}
+          }.to change(UsersMed, :count).by(1)
+        end
+
+        it "assigns a newly created users_med as @users_med" do
+          post :create, {:users_med => valid_attributes}
+          expect(assigns(:users_med)).to be_a(UsersMed)
+          expect(assigns(:users_med)).to be_persisted
+        end
+
+        it "redirects to the created users_med" do
+          post :create, {:users_med => valid_attributes}
+          expect(response).to redirect_to(UsersMed.last)
+        end
+      end
+
+      describe "with invalid params" do
+        it "assigns a newly created but unsaved users_med as @users_med" do
+          UsersMed.any_instance.stub(:save).and_return(false)
+          post :create, {:users_med => { "num_doses" => "invalid value" }}
+          expect(assigns(:users_med)).to be_a_new(UsersMed)
+        end
+
+        it "re-renders the 'new' template" do
+          UsersMed.any_instance.stub(:save).and_return(false)
+          post :create, {:users_med => { "num_doses" => "invalid value" }}
+          expect(response).to render_template("new")
+        end
+      end
+    end # logged in
+  end # create
+
 #  describe "PUT update" do
 #    describe "with valid params" do
-#      it "updates the requested blah" do
-#        blah = Blah.create! valid_attributes
-#        # Assuming there are no other blahs in the database, this
-#        # specifies that the Blah created on the previous line
+#      it "updates the requested users_med" do
+#        users_med = UsersMed.create! valid_attributes
+#        # Assuming there are no other users_meds in the database, this
+#        # specifies that the UsersMed created on the previous line
 #        # receives the :update_attributes message with whatever params are
 #        # submitted in the request.
-#        Blah.any_instance.should_receive(:update).with({ "name" => "MyString" })
-#        put :update, {:id => blah.to_param, :blah => { "name" => "MyString" }}, valid_session
+#        UsersMed.any_instance.should_receive(:update).with({ "name" => "MyString" })
+#        put :update, {:id => users_med.to_param, :users_med => { "name" => "MyString" }}, valid_session
 #      end
 #
-#      it "assigns the requested blah as @blah" do
-#        blah = Blah.create! valid_attributes
-#        put :update, {:id => blah.to_param, :blah => valid_attributes}, valid_session
-#        assigns(:blah).should eq(blah)
+#      it "assigns the requested users_med as @users_med" do
+#        users_med = UsersMed.create! valid_attributes
+#        put :update, {:id => users_med.to_param, :users_med => valid_attributes}, valid_session
+#        assigns(:users_med).should eq(users_med)
 #      end
 #
-#      it "redirects to the blah" do
-#        blah = Blah.create! valid_attributes
-#        put :update, {:id => blah.to_param, :blah => valid_attributes}, valid_session
-#        response.should redirect_to(blah)
+#      it "redirects to the users_med" do
+#        users_med = UsersMed.create! valid_attributes
+#        put :update, {:id => users_med.to_param, :users_med => valid_attributes}, valid_session
+#        response.should redirect_to(users_med)
 #      end
 #    end
 #
 #    describe "with invalid params" do
-#      it "assigns the blah as @blah" do
-#        blah = Blah.create! valid_attributes
+#      it "assigns the users_med as @users_med" do
+#        users_med = UsersMed.create! valid_attributes
 #        # Trigger the behavior that occurs when invalid params are submitted
-#        Blah.any_instance.stub(:save).and_return(false)
-#        put :update, {:id => blah.to_param, :blah => { "name" => "invalid value" }}, valid_session
-#        assigns(:blah).should eq(blah)
+#        UsersMed.any_instance.stub(:save).and_return(false)
+#        put :update, {:id => users_med.to_param, :users_med => { "name" => "invalid value" }}, valid_session
+#        assigns(:users_med).should eq(users_med)
 #      end
 #
 #      it "re-renders the 'edit' template" do
-#        blah = Blah.create! valid_attributes
+#        users_med = UsersMed.create! valid_attributes
 #        # Trigger the behavior that occurs when invalid params are submitted
-#        Blah.any_instance.stub(:save).and_return(false)
-#        put :update, {:id => blah.to_param, :blah => { "name" => "invalid value" }}, valid_session
+#        UsersMed.any_instance.stub(:save).and_return(false)
+#        put :update, {:id => users_med.to_param, :users_med => { "name" => "invalid value" }}, valid_session
 #        response.should render_template("edit")
 #      end
 #    end
@@ -166,16 +186,16 @@ describe UsersMedsController do
 #
 #  describe "DELETE destroy" do
 #    it "destroys the requested users_med" do
-#      blah = Blah.create! valid_attributes
+#      users_med = UsersMed.create! valid_attributes
 #      expect {
-#        delete :destroy, {:id => blah.to_param}, valid_session
-#      }.to change(Blah, :count).by(-1)
+#        delete :destroy, {:id => users_med.to_param}, valid_session
+#      }.to change(UsersMed, :count).by(-1)
 #    end
 #
-#    it "redirects to the blahs list" do
-#      blah = Blah.create! valid_attributes
-#      delete :destroy, {:id => blah.to_param}, valid_session
-#      response.should redirect_to(blahs_url)
+#    it "redirects to the users_meds list" do
+#      users_med = UsersMed.create! valid_attributes
+#      delete :destroy, {:id => users_med.to_param}, valid_session
+#      response.should redirect_to(users_meds_url)
 #    end
 #  end
 
