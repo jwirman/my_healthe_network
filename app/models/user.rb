@@ -5,9 +5,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_one :address
-  has_many :users_meds
-  has_many :meds, through: :users_meds
+  has_one :address, dependent: :destroy
+  has_many :users_meds, dependent: :destroy
+  has_many :meds, through: :users_meds, dependent: :destroy
+  has_many :scans, dependent: :destroy
 
   validates :email, presence: true
   validates :first_name, presence: true

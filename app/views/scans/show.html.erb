@@ -1,0 +1,17 @@
+<p>
+  <strong>User:</strong>
+  <%= @scan.user %>
+</p>
+
+<p>
+  <strong>Med:</strong>
+  <%= @scan.med %>
+</p>
+
+<p>
+  <strong>Scanned at:</strong>
+  <%= date_time(@scan.created_at) %>
+</p>
+
+<%= link_to 'Edit', edit_scan_path(@scan) %> |
+<%= link_to 'Back', scans_path %>

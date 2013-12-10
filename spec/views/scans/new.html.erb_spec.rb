@@ -1,0 +1,17 @@
+require 'spec_helper'
+
+describe "scans/new" do
+  before(:each) do
+    assign(:scan, stub_model(Scan,
+      :user => stub_model(User),
+      :med => stub_model(Med)
+    ).as_new_record)
+  end
+
+  it "renders new scan form" do
+    render
+    assert_select "form[action=?][method=?]", scans_path, "post" do
+      assert_select "select#scan_med_id[name=?]", "scan[med_id]"
+    end
+  end
+end

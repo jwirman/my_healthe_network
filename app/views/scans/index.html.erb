@@ -1,0 +1,29 @@
+<h1>Listing scans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Med</th>
+      <th>Scanned At</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @scans.each do |scan| %>
+      <tr>
+        <td><%= scan.med %></td>
+        <td><%= date_time(scan.created_at) %></td>
+        <td><%= link_to 'Show', scan %></td>
+        <td><%= link_to 'Edit', edit_scan_path(scan) %></td>
+        <td><%= link_to 'Destroy', scan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Scan', new_scan_path %>

@@ -1,5 +1,7 @@
 MyHealtheNetwork::Application.routes.draw do
 
+  resources :scans
+
   resources :users_meds
 
   get 'frequency_units' => 'users_meds#frequency_units'

@@ -9,7 +9,7 @@ describe "users_meds/edit" do
     ))
   end
 
-  it "renders the edit blah form" do
+  it "renders the edit users_med form" do
     render
     assert_select "form[action=?][method=?]", users_med_path(@users_med), "post" do
       assert_select "select#users_med_med_id[name=?]", "users_med[med_id]"
