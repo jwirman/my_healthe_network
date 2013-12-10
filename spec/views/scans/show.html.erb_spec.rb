@@ -11,7 +11,7 @@ describe "scans/show" do
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(/user1@example.com/)
+    expect(rendered).to match(/@example.com/)
     expect(rendered).to match(/Generic 10mg \(Brand\)/)
     expect(rendered).to match(/EST/)
   end
