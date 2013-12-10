@@ -5,6 +5,7 @@ gem 'rails', '4.0.0'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem "devise"
+gem "exception_notification", "~> 4.0.1"
 gem 'heroku', '~> 2.24.0'
 gem 'mysql2'
 gem 'pg'

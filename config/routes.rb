@@ -1,10 +1,10 @@
 MyHealtheNetwork::Application.routes.draw do
 
   resources :scans
-
   resources :users_meds
 
   get 'frequency_units' => 'users_meds#frequency_units'
+  get 'test_error' => 'site#test_error'
 
   devise_for :users, controllers: { registrations: "registrations" }
   authenticated :user do
