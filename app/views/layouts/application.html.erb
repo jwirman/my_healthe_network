@@ -7,11 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="page">
 
   <%= render "shared/header" %>
 
-  <% if flash[:notice] %><p id="notice"><%= notice %></p><% end %>
-  <% if flash[:alert] %><p id="alert"><%= alert %></p><% end %>
+  <% if flash[:notice] %><p class="message notice"><%= notice %></p><% end %>
+  <% if flash[:alert] %><p class="message alert"><%= alert %></p><% end %>
 
   <section id="main">
     <%= yield %>
@@ -20,5 +21,6 @@
 
   <%= render 'shared/footer' %>
 
+</div>
 </body>
 </html>

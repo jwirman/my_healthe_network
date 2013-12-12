@@ -1,13 +1,19 @@
 <header class="page_header">
   <nav id="utility">
     <% if current_user %>
-      <p>Welcome <strong><%= current_user %></strong>
-      <%= link_to '[home]', root_path %>
-      <% if current_user.is_admin? %>
-        <%= link_to '[admin]', admin_root_path %>
-      <% end %>
+      <p><%= current_user.first_name+"'s Account" %>
       <%= link_to "[sign out]", destroy_user_session_path, method: :delete %>
       </p>
+    <% else %>
+      <p><%= link_to "[sign in]", new_user_session_path %></p>
     <% end %>
   </nav>
+
+  <h1><%= link_to 'My Health-e Network Logo', root_path %></h1>
+
+  <% if current_user %>
+    <nav id="member">
+      <%= render_navigation %>
+    </nav>
+  <% end %>
 </header>

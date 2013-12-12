@@ -1,0 +1,8 @@
+$total-columns  : 7;
+$column-width   : 4em;
+$gutter-width   : 1em;
+$grid-padding   : $gutter-width;
+
+$full-browser: 12;
+
+@import 'susy';

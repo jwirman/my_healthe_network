@@ -1,0 +1,61 @@
+@import 'normalize';
+@import 'susy_defaults';
+@import 'presentation';
+@import 'custom_mixins';
+
+#page {
+  @include container($total-columns, $full-browser);
+  padding: 0px;
+}
+
+body {
+  background: #ffffff;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+
+p { font-size: 1.0em; }
+
+table {
+  width:100%;
+  tbody {
+    tr { background: #E5E5E5; }
+  }
+}
+
+/* Container for Primary Content */
+#main {
+  min-height:400px;
+  padding: 20px;
+}
+
+/* Error handling */
+.error {
+  border: 1px solid #FBB;
+  background-color: #FDD;
+}
+.alert {
+  border: 1px solid #FBB;
+  background-color: #FDD;
+}
+.warning {
+  border: 1px solid #FF8;
+  background-color: #FFC;
+}
+.notice {
+  border: 1px solid #1FDF00;
+  background-color: #BBFFB6;
+}
+
+.message {
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  text-align: center;
+  margin: 0 auto 15px;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: normal;
+  letter-spacing: normal;
+  line-height: 2em;
+}

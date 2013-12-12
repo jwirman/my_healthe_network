@@ -1,0 +1,21 @@
+#page_footer {
+  @include span-columns(7,7);
+  clear: both;
+  margin: 0;
+  font-size: 0.7em;
+  padding-right: 1em;
+  padding-left: 1em;
+  h1 {
+    @include span-columns(3,7);
+  }
+  address {
+    @include span-columns(4 omega,7);
+    text-align: right;
+  }
+  .copyright {
+    @include span-columns(7,7);
+    text-align: right;
+    font-weight: 100;
+    font-size: 8pt;
+  }
+}

@@ -1,0 +1,19 @@
+nav {
+  font-size: 1.0em;
+  @include horizontal-list-with-bars;
+  .selected {
+    text-decoration: underline;
+  };
+}
+
+nav#utility {
+  p {
+    float:right;
+  }
+}
+
+nav#member {
+  background: $member-nav-background;
+  border-bottom: 3px solid $member-nav-border-bottom;
+  margin-top: 9px;
+}
