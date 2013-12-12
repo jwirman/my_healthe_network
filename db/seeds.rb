@@ -2,19 +2,21 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 
-User.create(first_name: 'Ken',
-            last_name: 'Erickson',
-            email: 'kenneth.erickson12@gmail.com',
-            is_admin: true,
-            password: 'password',
-            password_confirmation: 'password')
+ken = User.create(first_name: 'Ken',
+                  last_name: 'Erickson',
+                  email: 'kenneth.erickson12@gmail.com',
+                  is_admin: true,
+                  password: 'password',
+                  password_confirmation: 'password')
 
-User.create(first_name: 'Justin',
-            last_name: 'Wirman',
-            email: 'jwirman@gmail.com',
-            is_admin: true,
-            password: 'password',
-            password_confirmation: 'password')
+justin = User.create(first_name: 'Justin',
+                     last_name: 'Wirman',
+                     email: 'jwirman@gmail.com',
+                     is_admin: true,
+                     password: 'password',
+                     password_confirmation: 'password')
+ken.confirm!
+justin.confirm!
 
 Med.create(generic_name: 'lisinopril',
            brand_name:   'Zestril',

@@ -1,0 +1,7 @@
+#sign_in {
+  @include span-columns(1, 2);
+}
+
+#sign_up {
+  @include span-columns(3 omega,7);
+}
