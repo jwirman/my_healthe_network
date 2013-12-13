@@ -11,22 +11,30 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :med_id, collection: Med.all %>
-    <%= f.input :freq, label: 'Frequency', collection: Med::FREQUENCIES %>
-    <%= f.input :freq_unit, label: 'Frequency Unit', collection: Med::FREQUENCY_UNITS %>
-    <%= f.input :num_per_dose, label: 'Number per dose' %>
+    <%= f.input :med_id, label: 'Name of medication', collection: Med.all %>
+    <%= f.input :num_per_dose, label: 'How many' %>
+    <%= f.input :freq, label: 'How often', collection: Med::FREQUENCIES %>
+    <%= f.input :freq_unit, label: 'When', collection: Med::FREQUENCY_UNITS, required: true %>
+    <p>What time(s) would you ideally like to take your dose(s) on the days you need to take your medication?</p>
     <%= f.input :first_dose,  ampm: true, include_blank: true %>
     <%= f.input :second_dose, ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
     <%= f.input :third_dose,  ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
     <%= f.input :fourth_dose, ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
     <%= f.input :fifth_dose,  ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
     <%= f.input :sixth_dose,  ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
+    <p>You may take your medication a little before or after your ideal administration time.
+       How much time before or after your ideal administration time would you like to consider
+       taking your dose "On Time"?</p>
     <%= f.input :window, label: 'Window (min)', collection: Med::WINDOWS, include_blank: false %>
-    <%= f.input :start, label: 'Start Date', as: :string, input_html: { class: :datepicker } %>
-    <%= f.input :num_doses, label: 'Number of doses' %>
+    <p>We can help remind you when your supplly is getting low and even request a refill for you. (Participating Pharmacies Only)</p>
+    <p>No more unwanted auto-refills from your pharmacy.  Have it filled when you are actuall running out and need your medication!</p>
+    <%= f.input :start, label: 'What date do you plan on starting this medication?', as: :string, input_html: { class: :datepicker } %>
+    <br />
+    <%= f.input :num_doses, label: 'How many doses are in this fill?' %>
+    <p>For refill reminders or auto-refill requests, send my reminder or request when I have ?? days left.</p>
   </div>
   <br />
   <div class="form-actions">
-    <%= f.button :submit, 'Add Medication to List' %>
+    <%= f.button :submit, 'Add to My Medication List' %>
   </div>
 <% end %>
