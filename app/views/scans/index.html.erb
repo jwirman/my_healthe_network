@@ -1,28 +1,36 @@
-<h1>Listing scans</h1>
+<h1>My Scans</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Med</th>
-      <th>Scanned At</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+<% if @scans.blank? %>
 
-  <tbody>
-    <% @scans.each do |scan| %>
+  <p>You do not have any scan records yet.</p>
+
+<% else %>
+
+  <table>
+    <thead>
       <tr>
-        <td><%= scan.med %></td>
-        <td><%= date_time(scan.created_at) %></td>
-        <td><%= link_to 'Show', scan %></td>
-        <td><%= link_to 'Edit', edit_scan_path(scan) %></td>
-        <td><%= link_to 'Destroy', scan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Med</th>
+        <th>Scanned At</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @scans.each do |scan| %>
+        <tr>
+          <td><%= scan.med %></td>
+          <td><%= date_time(scan.created_at) %></td>
+          <td><%= link_to 'Show', scan %></td>
+          <td><%= link_to 'Edit', edit_scan_path(scan) %></td>
+          <td><%= link_to 'Destroy', scan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+<% end %>
 
 <br>
 

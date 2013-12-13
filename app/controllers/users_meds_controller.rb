@@ -22,7 +22,7 @@ class UsersMedsController < ApplicationController
 
     respond_to do |format|
       if @users_med.save
-        format.html { redirect_to @users_med, notice: 'Users med was successfully created.' }
+        format.html { redirect_to users_meds_path, notice: "#{current_user.first_name}'s #{@users_med.med} was successfully added." }
       else
         format.html { render action: 'new' }
       end
