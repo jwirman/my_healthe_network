@@ -6,3 +6,5 @@ namespace 'Medlist', (exports) ->
       showOn: "both"
       buttonImageOnly: true
       buttonImage: image_path("calendar.gif")
+      changeMonth: true
+      changeYear: true
