@@ -1,7 +1,7 @@
 @import 'normalize';
 @import 'susy_defaults';
-@import 'presentation';
-@import 'custom_mixins';
+@import 'palette';
+@import "presentation";
 
 #page {
   @include container($total-columns, $full-browser);
@@ -15,13 +15,6 @@ body {
 }
 
 p { font-size: 1.0em; }
-
-table {
-  width:100%;
-  tbody {
-    tr { background: #E5E5E5; }
-  }
-}
 
 /* Container for Primary Content */
 #main {

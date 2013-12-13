@@ -1,6 +1,6 @@
-/* Color Pallette */
-$light-grey : #616161;
+// This purpose of this file is to map colors and fonts
+// to variables needed in the layout and semantics
 
 /* Navigation */
-$member-nav-background: darkblue;
+$member-nav-background: $dark-blue;
 $member-nav-border-bottom: $light-grey;

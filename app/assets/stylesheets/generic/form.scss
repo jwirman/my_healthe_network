@@ -1,0 +1,154 @@
+form div.form-inputs {
+  margin-bottom: 1em;
+}
+
+div.input {
+  @include clearfix;
+  position: relative;
+  width: 100%;
+  clear: both;
+  margin-bottom: .6em;
+  label {
+    display: inline-block;
+    width: 8em;
+    text-align: right;
+    margin-right: .6em;
+    abbr[title] {
+      color: red;
+    }
+    &.checkbox {
+      display: inline;
+      input {
+        margin-left: 8.6em;
+      }
+    }
+  }
+  input.datepicker, input.hasDatepicker {
+    margin-right: .5em;
+  }
+  img.ui-datepicker-trigger {
+    margin-bottom: -.15em;
+  }
+}
+
+.form-actions {
+  margin-left: 8.6em;
+}
+
+div.address {
+  div.input label {
+    width: 4em;
+  }
+}
+
+div.general_info {
+  div.input label {
+    width: 10em;
+  }
+}
+
+div.other {
+  div.input {
+    margin-left: -6em;
+  }
+  label.checkbox {
+    margin-left: 12em;
+    text-align: left;
+    padding-left: .6em;
+    input {
+      height: auto;
+      padding: 0;
+      margin: 0 .25em 0 0;
+      font-size: inherit;
+      line-height: inherit;
+    }
+  }
+}
+
+form h3 span.info {
+  margin-left: .6em;
+  font-size: .75em;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+  -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+  transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+fieldset {
+  @include rounded-corners;
+  margin-bottom: 15px;
+  padding-top: 15px;
+  legend {
+    padding: 0 .5em;
+  }
+}
+
+select,
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="search"],
+input[type="tel"],
+input[type="color"] {
+  display: inline-block;
+  color: #555555;
+  vertical-align: middle;
+  @include rounded-corners;
+  height:30px;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      box-sizing: border-box;
+  padding: 5px 6px;
+  margin-left: 0;
+  font-size: 13px;
+  line-height: 1.2em;
+}
+
+textarea {
+  height: 5em;
+}
+
+select, input[type="file"],
+div.input select,
+div.input input[type="file"] {
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+}
+
+.hint {
+  font-size: small;
+  font-style: italic;
+  padding-left: 10px;
+}

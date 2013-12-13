@@ -1,19 +1,16 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require jquery.ui.datepicker
- */
+// This file/directory structure is inspired by several things:
+// - using scss' @import directive for preprocessing rather than the asset pipeline
+// - The book 'Scalable and Modular Architecture for CSS'
+// - The article http://engineering.appfolio.com/2012/11/16/css-architecture/
 
+@import "mixins";
 @import 'base/base';
+
+@import "generic/form";
+@import "generic/table";
 
 @import 'modules/header';
 @import 'modules/footer';
 @import 'modules/sign_in';
+
+@import "jquery.ui.datepicker";
