@@ -16,12 +16,12 @@
     <%= f.input :freq, label: 'How often', collection: Med::FREQUENCIES %>
     <%= f.input :freq_unit, label: 'When', collection: Med::FREQUENCY_UNITS, required: true %>
     <p>What time(s) would you ideally like to take your dose(s) on the days you need to take your medication?</p>
-    <%= f.input :first_dose,  ampm: true, include_blank: true %>
-    <%= f.input :second_dose, ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
-    <%= f.input :third_dose,  ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
-    <%= f.input :fourth_dose, ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
-    <%= f.input :fifth_dose,  ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
-    <%= f.input :sixth_dose,  ampm: true, include_blank: true, wrapper_html: {style: "display: none"} %>
+    <%= f.input :first_dose,  ampm: true, minute_step: 5, include_blank: true %>
+    <%= f.input :second_dose, ampm: true, minute_step: 5, include_blank: true, wrapper_html: {style: "display: none"} %>
+    <%= f.input :third_dose,  ampm: true, minute_step: 5, include_blank: true, wrapper_html: {style: "display: none"} %>
+    <%= f.input :fourth_dose, ampm: true, minute_step: 5, include_blank: true, wrapper_html: {style: "display: none"} %>
+    <%= f.input :fifth_dose,  ampm: true, minute_step: 5, include_blank: true, wrapper_html: {style: "display: none"} %>
+    <%= f.input :sixth_dose,  ampm: true, minute_step: 5, include_blank: true, wrapper_html: {style: "display: none"} %>
     <p>You may take your medication a little before or after your ideal administration time.
        How much time before or after your ideal administration time would you like to consider
        taking your dose "On Time"?</p>

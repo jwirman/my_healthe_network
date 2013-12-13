@@ -39,6 +39,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'awesome_print', group: :development
 
 # Gems used only for assets and not required
 # in production environments by default.
