@@ -22,7 +22,7 @@ class ScansController < ApplicationController
 
     respond_to do |format|
       if @scan.save
-        format.html { redirect_to @scan, notice: 'Scan was successfully created.' }
+        format.html { redirect_to scans_path, notice: 'Scan was successfully created.' }
       else
         format.html { render action: 'new' }
       end

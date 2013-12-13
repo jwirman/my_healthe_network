@@ -60,7 +60,7 @@ describe ScansController do
       it "redirects to the created scan" do
         @user.should_receive(:id).once.and_return 1
         post :create, {:scan => {med_id: 1}}
-        expect(response).to redirect_to(Scan.last)
+        expect(response).to redirect_to(scans_path)
       end
     end
 
