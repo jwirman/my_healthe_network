@@ -165,7 +165,7 @@ describe UsersMedsController do
 
         it "redirects to the users_med" do
           put :update, {id: 1, users_med: attributes_for(:users_med)}
-          expect(response).to redirect_to(@users_med)
+          expect(response).to redirect_to(users_meds_path)
         end
       end
 

@@ -12,5 +12,7 @@ describe UsersMed do
   it { should validate_numericality_of :num_per_dose }
   it { should validate_numericality_of :num_doses }
 
+  it 'determines number of doses from frequency and frequency_unit'
+
 
 end

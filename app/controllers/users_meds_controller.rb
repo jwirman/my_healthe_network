@@ -32,7 +32,7 @@ class UsersMedsController < ApplicationController
   def update
     respond_to do |format|
       if @users_med.update(users_med_params)
-        format.html { redirect_to @users_med, notice: 'Users med was successfully updated.' }
+        format.html { redirect_to users_meds_path, notice: 'Medication was successfully updated.' }
       else
         format.html { render action: 'edit' }
       end

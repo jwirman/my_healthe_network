@@ -7,6 +7,7 @@ class Med < ActiveRecord::Base
     "#{generic_name} #{strength} (#{brand_name})"
   end
 
+  #TODO: change this to a hash of stored_values => display_values
   FREQUENCIES = [
     'One time',
     'Two times',
