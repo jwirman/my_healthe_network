@@ -13,13 +13,13 @@ feature 'new medication form' do
   end
 
   scenario 'create new users_med' do
-    select(@med.to_s, from: 'Med')
+    select(@med.to_s, from: 'users_med_med_id')
     select('Four times', from: 'users_med_freq')
     select('Daily', from: 'users_med_freq_unit')
-    fill_in('Start Date', with: Date.today)
+    fill_in('users_med_start', with: Date.today)
     fill_in('users_med_num_doses', with: 5)
-    click_button('Add Medication to List')
-    expect(page).to have_content('Users med was successfully created.')
+    click_button('Add to My Medication List')
+    expect(page).to have_content('Generic 10mg (Brand) was successfully added.')
   end
 
   scenario 'correct number of doses are displayed', js: true do

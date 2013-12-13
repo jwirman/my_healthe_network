@@ -94,26 +94,29 @@ describe UsersMedsController do
 
     context 'when logged in' do
       before :each do
-        user = sign_in
-        user.should_receive(:id).once.and_return 1
+        @user = sign_in
+        @user.should_receive(:id).once.and_return 1
       end
 
       describe "with valid params" do
         it "creates a new UsersMed" do
+          @user.should_receive(:first_name).once.and_return 'John'
           expect {
             post :create, {users_med: attributes_for(:users_med)}
           }.to change(UsersMed, :count).by(1)
         end
 
         it "assigns a newly created users_med as @users_med" do
+          @user.should_receive(:first_name).once.and_return 'John'
           post :create, {users_med: attributes_for(:users_med)}
           expect(assigns(:users_med)).to be_a(UsersMed)
           expect(assigns(:users_med)).to be_persisted
         end
 
         it "redirects to the created users_med" do
+          @user.should_receive(:first_name).once.and_return 'John'
           post :create, {users_med: attributes_for(:users_med)}
-          expect(response).to redirect_to(UsersMed.last)
+          expect(response).to redirect_to(users_meds_path)
         end
       end
 

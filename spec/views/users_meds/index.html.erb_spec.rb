@@ -19,7 +19,6 @@ describe "users_meds/index" do
   it "renders a list of users_meds" do
     render
     assert_select "tr>td", :text => "()", :count => 2
-    assert_select "tr>td", :text => "One time", :count => 2
-    assert_select "tr>td", :text => "Daily", :count => 2
+    assert_select "tr>td", :text => "One time Daily", :count => 2
   end
 end
