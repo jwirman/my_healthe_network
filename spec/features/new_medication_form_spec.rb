@@ -15,7 +15,7 @@ feature 'new medication form' do
   scenario 'create new users_med' do
     select(@med.to_s, from: 'users_med_med_id')
     select('Four times', from: 'users_med_freq')
-    select('Daily', from: 'users_med_freq_unit')
+    select('daily', from: 'users_med_freq_unit')
     fill_in('users_med_start', with: Date.today)
     fill_in('users_med_num_doses', with: 5)
     click_button('Add to My Medication List')

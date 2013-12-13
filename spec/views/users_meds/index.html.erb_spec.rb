@@ -5,13 +5,13 @@ describe "users_meds/index" do
     assign(:users_meds, [
       stub_model(UsersMed,
         :med => stub_model(Med),
-        :freq => "One time",
-        :freq_unit => "Daily"
+        :freq => "time_1",
+        :freq_unit => "daily"
       ),
       stub_model(UsersMed,
         :med => stub_model(Med),
-        :freq => "One time",
-        :freq_unit => "Daily"
+        :freq => "time_1",
+        :freq_unit => "daily"
       )
     ])
   end
@@ -19,6 +19,6 @@ describe "users_meds/index" do
   it "renders a list of users_meds" do
     render
     assert_select "tr>td", :text => "()", :count => 2
-    assert_select "tr>td", :text => "One time Daily", :count => 2
+    assert_select "tr>td", :text => "One time daily", :count => 2
   end
 end

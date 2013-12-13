@@ -9,29 +9,19 @@ class UsersMed < ActiveRecord::Base
   def dose_times
     array_of_dose_times = [first_dose]
 
-    if (index = freq =~ /time/) and freq_unit == 'Daily'
-      num = freq[0,index].strip
+    if freq_unit == 'daily' and freq =~ /time/
+      num = /\d/.match(freq)[0].to_i
       case num
-        when 'Two'
+        when 2
           array_of_dose_times << second_dose
-        when 'Three'
-          array_of_dose_times << second_dose
-          array_of_dose_times << third_dose
-        when 'Four'
-          array_of_dose_times << second_dose
-          array_of_dose_times << third_dose
-          array_of_dose_times << fourth_dose
-        when 'Five'
-          array_of_dose_times << second_dose
-          array_of_dose_times << third_dose
-          array_of_dose_times << fourth_dose
-          array_of_dose_times << fifth_dose
-        when 'Six'
-          array_of_dose_times << second_dose
-          array_of_dose_times << third_dose
-          array_of_dose_times << fourth_dose
-          array_of_dose_times << fifth_dose
-          array_of_dose_times << sixth_dose
+        when 3
+          array_of_dose_times << second_dose << third_dose
+        when 4
+          array_of_dose_times << second_dose << third_dose << fourth_dose
+        when 5
+          array_of_dose_times << second_dose << third_dose << fourth_dose << fifth_dose
+        when 6
+          array_of_dose_times << second_dose << third_dose << fourth_dose << fifth_dose << sixth_dose
       end
     end
 

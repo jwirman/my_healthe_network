@@ -14,8 +14,8 @@ namespace 'Medlist', (exports) ->
     init: ->
       @updateUnits()
       @updateDoses()
-      if (@freqUnitSelect.val() == 'Daily') and (m = @freqSelect.val().match(/time/))
-        num = m.input.substring(0,m.index).trim()
+      if (@freqUnitSelect.val() == 'daily') and (m = @freqSelect.val().match(/time/))
+        num = parseInt(m.input.match(/\d/)[0])
         @toggleDoses(num)
 
     updateUnits: ->
@@ -29,52 +29,52 @@ namespace 'Medlist', (exports) ->
     updateDoses: ->
       @freqSelect.change =>
         if m = @freqSelect.val().match(/time/)
-          num = m.input.substring(0,m.index).trim()
+          num = parseInt(m.input.match(/\d/)[0])
           @toggleDoses(num)
         else
-          @toggleDoses('One')
+          @toggleDoses(1)
 
       @freqUnitSelect.change =>
-        if (@freqUnitSelect.val() == 'Daily') and (m = @freqSelect.val().match(/time/))
-          num = m.input.substring(0,m.index).trim()
+        if (@freqUnitSelect.val() == 'daily') and (m = @freqSelect.val().match(/time/))
+          num = parseInt(m.input.match(/\d/)[0])
           @toggleDoses(num)
         else
-          @toggleDoses('One')
+          @toggleDoses(1)
 
     toggleDoses: (number) ->
       #console.log number
       switch number
-        when 'One'
+        when 1
           @secondDose.hide()
           @thirdDose.hide()
           @fourthDose.hide()
           @fifthDose.hide()
           @sixthDose.hide()
-        when 'Two'
+        when 2
           @secondDose.show()
           @thirdDose.hide()
           @fourthDose.hide()
           @fifthDose.hide()
           @sixthDose.hide()
-        when 'Three'
+        when 3
           @secondDose.show()
           @thirdDose.show()
           @fourthDose.hide()
           @fifthDose.hide()
           @sixthDose.hide()
-        when 'Four'
+        when 4
           @secondDose.show()
           @thirdDose.show()
           @fourthDose.show()
           @fifthDose.hide()
           @sixthDose.hide()
-        when 'Five'
+        when 5
           @secondDose.show()
           @thirdDose.show()
           @fourthDose.show()
           @fifthDose.show()
           @sixthDose.hide()
-        when 'Six'
+        when 6
           @secondDose.show()
           @thirdDose.show()
           @fourthDose.show()
