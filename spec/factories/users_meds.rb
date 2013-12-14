@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :users_med do
+    user_id 1
     med_id 1
     freq "time_1"
     freq_unit "daily"
@@ -12,7 +13,7 @@ FactoryGirl.define do
     fourth_dose Time.now + 3.hours
     fifth_dose  Time.now + 4.hours
     sixth_dose  Time.now + 5.hours
-    window 1
+    window 5
     num_doses 1
   end
 end

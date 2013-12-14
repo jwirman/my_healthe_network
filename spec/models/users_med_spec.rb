@@ -7,10 +7,18 @@ describe UsersMed do
 
   it { should validate_presence_of :med_id }
   it { should validate_presence_of :freq }
+  it { should validate_presence_of :freq_unit }
   it { should validate_presence_of :start }
   it { should validate_presence_of :num_doses }
+  it { should validate_presence_of :window }
   it { should validate_numericality_of :num_per_dose }
   it { should validate_numericality_of :num_doses }
+  it { should ensure_inclusion_of(:freq).in_array Med::FREQUENCIES.values }
+  it { should ensure_inclusion_of(:freq_unit).in_array Med::FREQUENCY_UNITS +
+                                                       Med::FREQUENCY_UNITS_DAY +
+                                                       Med::FREQUENCY_UNITS_HOUR +
+                                                       Med::FREQUENCY_UNITS_MEALS }
+  it { should ensure_inclusion_of(:window).in_array Med::WINDOWS.map{|str| str.to_i} }
 
   it 'gets one dose_time' do
     users_med = create(:users_med, freq: 'time_1', freq_unit: 'daily')

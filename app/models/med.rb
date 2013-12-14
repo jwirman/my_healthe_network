@@ -33,11 +33,11 @@ class Med < ActiveRecord::Base
     'Going to Bed'      => 'bed',
     'PRN'               => 'prn'
   }
-  FREQUENCY_UNITS = %w[daily weekly monthly]
-  FREQUENCY_UNITS_DAY = %w[day]
-  FREQUENCY_UNITS_HOUR = %w[hour(s)]
+  FREQUENCY_UNITS       = %w[daily weekly monthly]
+  FREQUENCY_UNITS_DAY   = %w[day]
+  FREQUENCY_UNITS_HOUR  = %w[hour(s)]
   FREQUENCY_UNITS_MEALS = %w[breakfast lunch dinner snack]
-  WINDOWS = %w[5 15 30 60] # minutes
+  WINDOWS               = %w[5 15 30 60] # minutes
 
   def self.units_from_freq(frequency)
     case frequency
