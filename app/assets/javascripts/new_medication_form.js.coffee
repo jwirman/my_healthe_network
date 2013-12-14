@@ -13,33 +13,32 @@ namespace 'Medlist', (exports) ->
 
     init: ->
       @updateUnits()
-      @updateDoses()
-      if (@freqUnitSelect.val() == 'daily') and (m = @freqSelect.val().match(/time/))
-        num = parseInt(m.input.match(/\d/)[0])
-        @toggleDoses(num)
+      @checkForDailyAndUpdateDoses()
+      @freqSelect.change =>
+        @updateUnits()
+        @updateDoses()
+      @freqUnitSelect.change =>
+        @checkForDailyAndUpdateDoses()
 
     updateUnits: ->
-      @freqSelect.change =>
-        $.ajax
-          url: "/frequency_units"
-          data:
-            freq: @freqSelect.val()
-          dataType: "script"
+      $.ajax
+        url: "/frequency_units"
+        data:
+          freq: @freqSelect.val()
+        dataType: "script"
 
     updateDoses: ->
-      @freqSelect.change =>
-        if m = @freqSelect.val().match(/time/)
-          num = parseInt(m.input.match(/\d/)[0])
-          @toggleDoses(num)
-        else
-          @toggleDoses(1)
+      if m = @freqSelect.val().match(/time/)
+        num = parseInt(m.input.match(/\d/)[0])
+        @toggleDoses(num)
+      else
+        @toggleDoses(1)
 
-      @freqUnitSelect.change =>
-        if (@freqUnitSelect.val() == 'daily') and (m = @freqSelect.val().match(/time/))
-          num = parseInt(m.input.match(/\d/)[0])
-          @toggleDoses(num)
-        else
-          @toggleDoses(1)
+    checkForDailyAndUpdateDoses: ->
+      if (@freqUnitSelect.val() == 'daily')
+        @updateDoses()
+      else
+        @toggleDoses(1)
 
     toggleDoses: (number) ->
       #console.log number
