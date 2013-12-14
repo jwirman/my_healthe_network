@@ -9,6 +9,9 @@ class SiteController < ApplicationController
   def chart
   end
 
+  def network
+  end
+
   def test_error
     raise "testing"
   end

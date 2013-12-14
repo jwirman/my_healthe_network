@@ -6,6 +6,7 @@ MyHealtheNetwork::Application.routes.draw do
   get 'frequency_units' => 'users_meds#frequency_units'
   get "/faq" => "site#faq"
   get "/chart" => "site#chart"
+  get "/network" => "site#network"
   get 'test_error' => 'site#test_error'
 
   devise_for :users, controllers: { registrations: "registrations" }
