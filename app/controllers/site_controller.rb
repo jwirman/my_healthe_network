@@ -6,6 +6,9 @@ class SiteController < ApplicationController
   def faq
   end
 
+  def chart
+  end
+
   def test_error
     raise "testing"
   end

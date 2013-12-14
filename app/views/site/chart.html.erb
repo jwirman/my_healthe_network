@@ -1,0 +1,9 @@
+<%= content_for :javascript do %>
+  <% javascript_tag do %>
+    $(function() {
+      new window.Chart.CalendarView();
+    });
+  <% end %>
+<% end %>
+
+<div id='calendar'></div>
