@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: meds
+#
+#  id           :integer          not null, primary key
+#  generic_name :string(255)
+#  brand_name   :string(255)
+#  strength     :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 class Med < ActiveRecord::Base
   has_many :users, through: :users_meds
 

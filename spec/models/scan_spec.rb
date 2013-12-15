@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: scans
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  med_id     :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 require 'spec_helper'
 
 describe Scan do

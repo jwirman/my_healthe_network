@@ -1,3 +1,26 @@
+# == Schema Information
+#
+# Table name: users_meds
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  med_id       :integer
+#  freq         :string(255)
+#  freq_unit    :string(255)
+#  num_per_dose :integer
+#  start        :date
+#  first_dose   :time
+#  second_dose  :time
+#  third_dose   :time
+#  fourth_dose  :time
+#  fifth_dose   :time
+#  sixth_dose   :time
+#  window       :integer          default(5), not null
+#  num_doses    :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
 require 'spec_helper'
 
 describe UsersMed do
