@@ -4,9 +4,10 @@ MyHealtheNetwork::Application.routes.draw do
   resources :users_meds
 
   get 'frequency_units' => 'users_meds#frequency_units'
-  get "/faq" => "site#faq"
-  get "/chart" => "site#chart"
-  get "/network" => "site#network"
+  get 'faq' => 'site#faq'
+  get 'chart' => 'site#chart'
+  get 'network' => 'site#network'
+  get 'generate_calendar_events' => 'site#generate_calendar_events'
   get 'test_error' => 'site#test_error'
 
   devise_for :users, controllers: { registrations: "registrations" }

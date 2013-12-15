@@ -4,21 +4,18 @@ ruby '2.0.0'
 gem 'rails', '4.0.0'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
-gem "devise"
-gem "exception_notification", "~> 4.0.1"
+gem 'devise'
+gem 'exception_notification', '~> 4.0.1'
 gem 'heroku', '~> 2.24.0'
 gem 'jquery-rails'
 gem 'mysql2'
 gem 'pg'
-gem "simple_form", "~> 3.0.0"
-gem "simple-navigation", "~> 3.11.0"
-
+gem 'simple_form', '~> 3.0.0'
+gem 'simple-navigation', '~> 3.11.0'
+gem 'turbolinks'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -30,16 +27,6 @@ end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
-gem 'awesome_print', group: :development
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -58,8 +45,11 @@ group :production do
   gem 'rails_12factor'
 end
 
-# needed in dev group for fixture replacement
-gem 'factory_girl_rails'
+group :development do
+  gem 'factory_girl_rails' # needed in dev group for fixture replacement
+  gem 'awesome_print'
+  gem 'annotate', '~> 2.6.0'
+end
 
 group :test do
   gem 'rspec-rails'
@@ -67,5 +57,5 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   #gem 'selenium-webdriver'
-  gem "database_cleaner", "~> 1.2.0"
+  gem 'database_cleaner', '~> 1.2.0'
 end
