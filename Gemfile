@@ -59,4 +59,5 @@ group :test do
   gem 'capybara-webkit'
   #gem 'selenium-webdriver'
   gem 'database_cleaner', '~> 1.2.0'
+  gem 'simplecov', '~> 0.8.2'
 end
