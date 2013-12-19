@@ -1,4 +1,5 @@
 class SiteController < ApplicationController
+  before_action :authenticate_user!
 
   def index
   end
@@ -26,10 +27,6 @@ class SiteController < ApplicationController
                  allDay: false}
     end
     render json: events.to_json
-  end
-
-  def test_error
-    raise "testing"
   end
 
 end

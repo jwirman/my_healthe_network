@@ -8,7 +8,6 @@ MyHealtheNetwork::Application.routes.draw do
   get 'chart' => 'site#chart'
   get 'network' => 'site#network'
   get 'generate_calendar_events' => 'site#generate_calendar_events'
-  get 'test_error' => 'site#test_error'
 
   devise_for :users, controllers: { registrations: "registrations" }
   authenticated :user do
