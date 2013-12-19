@@ -29,15 +29,35 @@ class UsersMed < ActiveRecord::Base
   belongs_to :med
 
   # validations ...............................................................
-  validates :med_id, :freq, :freq_unit, :window, :start, presence: true, allow_blank: false
-  validates :num_per_dose, numericality: { greater_than: 0, only_integer: true }, allow_blank: true
-  validates :num_doses,    numericality: { greater_than: 0, only_integer: true }, presence: true
-  validates :freq, inclusion: { in: Med::FREQUENCIES.values }
-  validates :freq_unit, inclusion: { in: Med::FREQUENCY_UNITS +
+  validates :med_id, presence: true, allow_blank: false
+  validates :start, presence: true, allow_blank: false
+  validates :num_per_dose, allow_nil: true,
+                           numericality: { greater_than: 0, only_integer: true }
+  validates :num_doses, presence: true,
+                        allow_blank: false,
+                        numericality: { greater_than: 0, only_integer: true }
+  validates :freq, presence: true,
+                   allow_blank: false,
+                   inclusion: { in: Med::FREQUENCIES.values }
+  validates :freq_unit, allow_nil: false,
+                        allow_blank: true,
+                        inclusion: { in: Med::FREQUENCY_UNITS +
                                          Med::FREQUENCY_UNITS_DAY +
                                          Med::FREQUENCY_UNITS_HOUR +
                                          Med::FREQUENCY_UNITS_MEALS }
-  validates :window, inclusion: { in: Med::WINDOWS.map{|str| str.to_i} }
+  validates :window, presence: true,
+                     allow_blank: false,
+                     inclusion: { in: Med::WINDOWS.map{|str| str.to_i} }
+  validate :freq_has_correct_freq_unit
+
+  def freq_has_correct_freq_unit
+    if freq
+      allowed_units = Med.units_from_freq(freq)
+      unless allowed_units.include?(freq_unit)
+        errors.add(:freq_unit, 'is not valid')
+      end
+    end
+  end
 
   # callbacks .................................................................
   # scopes ....................................................................
@@ -76,6 +96,32 @@ class UsersMed < ActiveRecord::Base
 
   def firstdose_datetime_end
     DateTime.new(start.year, start.month, start.day, first_dose.hour, first_dose.min, first_dose.sec) + window.minutes
+  end
+
+  (Med::FREQUENCY_UNITS + Med::FREQUENCY_UNITS_DAY + Med::FREQUENCY_UNITS_HOUR + Med::FREQUENCY_UNITS_MEALS).each do |unit|
+    define_method("#{unit}?") { freq_unit == unit }
+  end
+
+  def days_remaining
+    if digit = /\d+/.match(freq)
+      num = digit[0].to_i
+    end
+    case
+      when daily?
+        days_supply = (num_doses/num)
+      when weekly?
+        days_supply = (num_doses/num) * 7
+      when monthly?
+        days_supply = (num_doses/num) * 30
+      when day?
+        days_supply = (num_doses * 2) # "every other day"
+      when hours?
+        days_supply = (num_doses / (24/num))
+      else
+        days_supply = num_doses
+    end
+    days_diff = (start - Date.today).to_i
+    days_supply + days_diff
   end
 
   # protected instance methods ................................................

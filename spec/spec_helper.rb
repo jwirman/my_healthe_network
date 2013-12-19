@@ -63,5 +63,6 @@ RSpec.configure do |config|
   config.include Features::SessionHelpers, type: :feature
   config.include Devise::TestHelpers, type: :controller
   config.include ControllerHelpers, type: :controller
+  config.include Matchers, type: :model
   config.include FactoryGirl::Syntax::Methods
 end

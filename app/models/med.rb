@@ -11,14 +11,17 @@
 #
 
 class Med < ActiveRecord::Base
+  # extends ...................................................................
+  # includes ..................................................................
+  # relationships .............................................................
   has_many :users, through: :users_meds
 
+  # validations ...............................................................
   validates :generic_name, presence: true
 
-  def to_s
-    "#{generic_name} #{strength} (#{brand_name})"
-  end
-
+  # callbacks .................................................................
+  # scopes ....................................................................
+  # additional config .........................................................
   FREQUENCIES = {
     # display_value => stored_value
     'One time'          => 'time_1',
@@ -47,10 +50,11 @@ class Med < ActiveRecord::Base
   }
   FREQUENCY_UNITS       = %w[daily weekly monthly]
   FREQUENCY_UNITS_DAY   = %w[day]
-  FREQUENCY_UNITS_HOUR  = %w[hour(s)]
+  FREQUENCY_UNITS_HOUR  = %w[hours]
   FREQUENCY_UNITS_MEALS = %w[breakfast lunch dinner snack]
   WINDOWS               = %w[5 15 30 60] # minutes
 
+  # class methods .............................................................
   def self.units_from_freq(frequency)
     case frequency
       when /time/
@@ -62,8 +66,16 @@ class Med < ActiveRecord::Base
       when /before|after/
         return FREQUENCY_UNITS_MEALS
       else
-        return []
+        return ['']
     end
   end
+
+  # public instance methods ...................................................
+  def to_s
+    "#{generic_name} #{strength} (#{brand_name})"
+  end
+
+  # protected instance methods ................................................
+  # private instance methods ..................................................
 
 end
