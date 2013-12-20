@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.ui.datepicker
+//= require jquery.ui.draggable
+//= require jquery.ui.resizable
 //= require fullcalendar
 //= require utilities
 //= require image_helpers

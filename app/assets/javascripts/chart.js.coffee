@@ -16,7 +16,7 @@ namespace 'Chart', (exports) ->
           left: 'prev,next today'
           center: 'title'
           right: 'month,agendaWeek,agendaDay'
-        #editable: true
+        editable: true
 
         events: (start, end, callback) ->
           # get new events for the calendar
@@ -31,9 +31,6 @@ namespace 'Chart', (exports) ->
         eventClick: (calEvent, jsEvent, view) ->
           window.location = "users_meds/#{calEvent.id}/edit"
 
-        #eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
-        #  #alert event.title + " was moved " + dayDelta + " days and " + minuteDelta + " minutes."
-        #  revertFunc() unless confirm("Are you sure about this change?")
-        #  # still need to make ajax call and set pending_data_entry_date or 
-        #  # pending_final_review_date based on type of event...
-        #  # want to verify this is ok first with client :)
+        eventDrop: (event, dayDelta, minuteDelta, allDay, revertFunc) ->
+          alert event.title + " was moved " + dayDelta + " days and " + minuteDelta + " minutes."
+          revertFunc() unless confirm("Are you sure about this change?")
