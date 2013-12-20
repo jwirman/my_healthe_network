@@ -48,6 +48,12 @@ describe UsersMed do
     expect(users_med.errors_on(:freq_unit)).to include('is not valid')
   end
 
+  it 'gets users_meds between two dates' do
+    one = create(:users_med, start: 2.weeks.ago)
+    two = create(:users_med, start: Date.today)
+    expect(UsersMed.between(Date.yesterday, Date.tomorrow).to_a).to eq [two]
+  end
+
   it 'gets one dose_time' do
     users_med = create(:users_med, freq: 'time_1', freq_unit: 'daily')
     expect(users_med.dose_times).to match_array([users_med.first_dose])
