@@ -58,6 +58,20 @@ describe UsersMed do
     expect(users_med.dose_times).to match_array([users_med.first_dose, users_med.second_dose])
   end
 
+  it 'gets three dose_times' do
+    users_med = create(:users_med, freq: 'time_3', freq_unit: 'daily')
+    expect(users_med.dose_times).to match_array([users_med.first_dose, users_med.second_dose, users_med.third_dose])
+  end
+
+  it 'gets five dose_times' do
+    users_med = create(:users_med, freq: 'time_5', freq_unit: 'daily')
+    expect(users_med.dose_times).to match_array([users_med.first_dose,
+                                                 users_med.second_dose,
+                                                 users_med.third_dose,
+                                                 users_med.fourth_dose,
+                                                 users_med.fifth_dose])
+  end
+
   it 'gets six dose_times' do
     users_med = create(:users_med, freq: 'time_6', freq_unit: 'daily')
     expect(users_med.dose_times).to match_array([users_med.first_dose,
@@ -66,6 +80,18 @@ describe UsersMed do
                                                  users_med.fourth_dose,
                                                  users_med.fifth_dose,
                                                  users_med.sixth_dose])
+  end
+
+  context 'datetimes for calendar' do
+    let(:users_med) { create(:users_med, start: Date.today, first_dose: Time.now.beginning_of_hour, window: 30) }
+
+    it 'gets first dose start date and time' do
+      expect(users_med.firstdose_datetime_start).to eq DateTime.now.beginning_of_hour.change(offset: "+0000") - 30.minutes
+    end
+
+    it 'gets first dose end date and time' do
+      expect(users_med.firstdose_datetime_end).to eq DateTime.now.beginning_of_hour.change(offset: "+0000") + 30.minutes
+    end
   end
 
   context 'calculate days remaining' do

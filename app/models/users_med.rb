@@ -91,11 +91,13 @@ class UsersMed < ActiveRecord::Base
   end
 
   def firstdose_datetime_start
-    DateTime.new(start.year, start.month, start.day, first_dose.hour, first_dose.min, first_dose.sec) - window.minutes
+    DateTime.new(start.year, start.month, start.day,
+                 first_dose.hour, first_dose.min, first_dose.sec) - window.minutes
   end
 
   def firstdose_datetime_end
-    DateTime.new(start.year, start.month, start.day, first_dose.hour, first_dose.min, first_dose.sec) + window.minutes
+    DateTime.new(start.year, start.month, start.day,
+                 first_dose.hour, first_dose.min, first_dose.sec) + window.minutes
   end
 
   (Med::FREQUENCY_UNITS + Med::FREQUENCY_UNITS_DAY + Med::FREQUENCY_UNITS_HOUR + Med::FREQUENCY_UNITS_MEALS).each do |unit|
