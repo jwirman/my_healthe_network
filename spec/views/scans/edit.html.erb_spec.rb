@@ -9,6 +9,9 @@ describe "scans/edit" do
   end
 
   it "renders the edit scan form" do
+    user = double(:user)
+    user.stub_chain(:meds, :uniq).and_return [:one, :two]
+    view.stub(:current_user).and_return user
     render
     assert_select "form[action=?][method=?]", scan_path(@scan), "post" do
       assert_select "select#scan_med_id[name=?]", "scan[med_id]"
