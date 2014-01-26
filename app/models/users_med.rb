@@ -90,14 +90,19 @@ class UsersMed < ActiveRecord::Base
     array_of_dose_times
   end
 
-  def firstdose_datetime_start
-    DateTime.new(start.year, start.month, start.day,
-                 first_dose.hour, first_dose.min, first_dose.sec) - window.minutes
-  end
-
-  def firstdose_datetime_end
-    DateTime.new(start.year, start.month, start.day,
-                 first_dose.hour, first_dose.min, first_dose.sec) + window.minutes
+  def dose_datetime_window(date=start, dose=1)
+    case dose
+      when 1 then time = first_dose
+      when 2 then time = second_dose
+      when 3 then time = third_dose
+      when 4 then time = fourth_dose
+      when 5 then time = fifth_dose
+      when 6 then time = sixth_dose
+      else time = first_dose
+    end
+    dt = DateTime.new(date.year, date.month, date.day,
+                      time.hour, time.min, time.sec)
+    [dt - window.minutes, dt + window.minutes]
   end
 
   (Med::FREQUENCY_UNITS + Med::FREQUENCY_UNITS_DAY + Med::FREQUENCY_UNITS_HOUR + Med::FREQUENCY_UNITS_MEALS).each do |unit|
@@ -124,6 +129,31 @@ class UsersMed < ActiveRecord::Base
     end
     days_diff = (start - Date.today).to_i
     days_supply + days_diff
+  end
+
+  def event_data
+    if digit = /\d+/.match(freq)
+      num = digit[0].to_i
+    end
+    events = []
+    case
+      when daily?
+        start.upto(start.end_of_month) do |day|
+          1.upto(num) do |i|
+            start, finish = dose_datetime_window(day, i)
+            events << { id: id,
+                        title: med.to_s,
+                        start: start,
+                        end: finish,
+                        allDay: false }
+          end
+        end
+      when weekly?
+      when monthly?
+      when day?
+      when hours?
+    end
+    events
   end
 
   # protected instance methods ................................................

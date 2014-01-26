@@ -89,14 +89,18 @@ describe UsersMed do
   end
 
   context 'datetimes for calendar' do
-    let(:users_med) { create(:users_med, start: Date.today, first_dose: Time.now.beginning_of_hour, window: 30) }
+    let(:users_med) { create(:users_med, start: Date.today, window: 30,
+                                         first_dose: Time.now.beginning_of_hour,
+                                         second_dose: Time.now.end_of_hour) }
 
-    it 'gets first dose start date and time' do
-      expect(users_med.firstdose_datetime_start).to eq DateTime.now.beginning_of_hour.change(offset: "+0000") - 30.minutes
+    it 'gets first dose start/end datetime window' do
+      dt = DateTime.now.beginning_of_hour.change(offset: "+0000")
+      expect(users_med.dose_datetime_window).to eq [dt-30.minutes, dt+30.minutes]
     end
 
-    it 'gets first dose end date and time' do
-      expect(users_med.firstdose_datetime_end).to eq DateTime.now.beginning_of_hour.change(offset: "+0000") + 30.minutes
+    it 'gets second dose start/end datetime window' do
+      dt = DateTime.now.end_of_hour.change(offset: "+0000")
+      expect(users_med.dose_datetime_window(Date.today, 2)).to eq [dt-30.minutes, dt+30.minutes]
     end
   end
 

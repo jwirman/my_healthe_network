@@ -20,13 +20,9 @@ class SiteController < ApplicationController
     end_date = date.end_of_month
     events = []
     current_user.users_meds.between(start_date, end_date).each do |users_med|
-      events << {id: users_med.id,
-                 title: users_med.med.to_s,
-                 start: users_med.firstdose_datetime_start,
-                 end: users_med.firstdose_datetime_end,
-                 allDay: false}
+      events << users_med.event_data
     end
-    render json: events.to_json
+    render json: events.flatten.to_json
   end
 
 end
