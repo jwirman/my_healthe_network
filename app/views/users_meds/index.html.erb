@@ -27,7 +27,7 @@
           <td width="15%"><%= Med::FREQUENCIES.key(users_med.freq) %> <%= users_med.freq_unit %></td>
           <td width="30%">
             <% users_med.dose_times.each_with_index do |dose_time, index| %>
-              Dose <%= index+1 %>: <%= hour_minute_ampm(dose_time) %><br />
+              Due at<%= index+1 %> <%= hour_minute_ampm(dose_time) %><br />
             <% end %>
           </td>
           <td width="8%">+/- <%= users_med.window %> min</td>
