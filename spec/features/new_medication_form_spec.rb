@@ -14,8 +14,7 @@ feature 'new medication form' do
 
   scenario 'create new users_med' do
     select(@med.to_s, from: 'users_med_med_id')
-    select('Four times', from: 'users_med_freq')
-    select('daily', from: 'users_med_freq_unit')
+    select('Four times daily', from: 'users_med_freq')
     fill_in('users_med_start', with: Date.today)
     fill_in('users_med_num_doses', with: 5)
     click_button('Add to My Medication List')
@@ -24,7 +23,7 @@ feature 'new medication form' do
 
   scenario 'correct number of doses are displayed', js: true do
     select('One time', from: 'users_med_freq')
-    expect(page).to have_content('First dose')
+    expect(page).to have_content('Dose time')
     select('Two times', from: 'users_med_freq')
     expect(page).to have_content('Second dose')
     select('Three times', from: 'users_med_freq')

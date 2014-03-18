@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131209171534) do
+ActiveRecord::Schema.define(version: 20140307153229) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20131209171534) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "charts", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "med_id"
+    t.datetime "taken_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "charts", ["med_id"], name: "index_charts_on_med_id", using: :btree
+  add_index "charts", ["user_id"], name: "index_charts_on_user_id", using: :btree
 
   create_table "meds", force: true do |t|
     t.string   "generic_name"
@@ -87,6 +98,7 @@ ActiveRecord::Schema.define(version: 20131209171534) do
   create_table "users_meds", force: true do |t|
     t.integer  "user_id"
     t.integer  "med_id"
+    t.string   "type"
     t.string   "freq"
     t.string   "freq_unit"
     t.integer  "num_per_dose"

@@ -24,52 +24,37 @@ class Med < ActiveRecord::Base
   # additional config .........................................................
   FREQUENCIES = {
     # display_value => stored_value
-    'One time'          => 'time_1',
-    'Two times'         => 'time_2',
-    'Three times'       => 'time_3',
-    'Four times'        => 'time_4',
-    'Five times'        => 'time_5',
-    'Six times'         => 'time_6',
-    'Every other'       => 'other',
-    'Every one (1)'     => 'every_1',
-    'Every two (2)'     => 'every_2',
-    'Every three (3)'   => 'every_3',
-    'Every four (4)'    => 'every_4',
-    'Every five (5)'    => 'every_5',
-    'Every six (6)'     => 'every_6',
-    'Every seven (7)'   => 'every_7',
-    'Every eight (8)'   => 'every_8',
-    'Every nine (9)'    => 'every_9',
-    'Every ten (10)'    => 'every_10',
-    'Every eleven (11)' => 'every_11',
-    'Every twelve (12)' => 'every_12',
+    'One time daily'    => 'daily_1',
+    'Two times daily'   => 'daily_2',
+    'Three times daily' => 'daily_3',
+    'Four times daily'  => 'daily_4',
+    'Five times daily'  => 'daily_5',
+    'Six times daily'   => 'daily_6',
+    'Every other day'   => 'daily_other',
+    'Weekly'            => 'weekly',
+    'Monthly'           => 'monthly',
+    'Every hour'        => 'every_1',
+    'Every 2 hours'     => 'every_2',
+    'Every 3 hours'     => 'every_3',
+    'Every 4 hours'     => 'every_4',
+    'Every 5 hours'     => 'every_5',
+    'Every 6 hours'     => 'every_6',
+    'Every 7 hours'     => 'every_7',
+    'Every 8 hours'     => 'every_8',
+    'Every 9 hours'     => 'every_9',
+    'Every 10 hours'    => 'every_10',
+    'Every 11 hours'    => 'every_11',
+    'Every 12 hours'    => 'every_12',
     'Before'            => 'before',
     'After'             => 'after',
     'Going to Bed'      => 'bed',
     'PRN'               => 'prn'
-  }
-  FREQUENCY_UNITS       = %w[daily weekly monthly]
-  FREQUENCY_UNITS_DAY   = %w[day]
-  FREQUENCY_UNITS_HOUR  = %w[hours]
+  }.with_indifferent_access.freeze
   FREQUENCY_UNITS_MEALS = %w[breakfast lunch dinner snack]
+  FREQUENCY_UNITS_DAYS  = %w[Sun Mon Tues Wed Thur Fri Sat]
   WINDOWS               = %w[5 15 30 60] # minutes
 
   # class methods .............................................................
-  def self.units_from_freq(frequency)
-    case frequency
-      when /time/
-        return FREQUENCY_UNITS
-      when /other/
-        return FREQUENCY_UNITS_DAY
-      when /every/
-        return FREQUENCY_UNITS_HOUR
-      when /before|after/
-        return FREQUENCY_UNITS_MEALS
-      else
-        return ['']
-    end
-  end
-
   # public instance methods ...................................................
   def to_s
     "#{generic_name} #{strength} (#{brand_name})"

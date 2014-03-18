@@ -1,0 +1,7 @@
+<% 1.upto 31 do |day| %>
+  <% if @users_med %>
+    <label><%=day%></label><%= check_box_tag 'monthly_users_med[freq_unit][]', day, @users_med.freq_unit.include?(day.to_s) %>
+  <% else %>
+    <label><%=day%></label><%= check_box_tag 'users_med[freq_unit][]', day %>
+  <% end %>
+<% end %>

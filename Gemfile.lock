@@ -99,6 +99,7 @@ GEM
     factory_girl_rails (4.3.0)
       factory_girl (~> 4.3.0)
       railties (>= 3.0.0)
+    ffi (1.9.3)
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
     fssm (0.2.10)
@@ -115,6 +116,8 @@ GEM
     inherited_resources (1.4.1)
       has_scope (~> 0.6.0.rc)
       responders (~> 1.0.0.rc)
+    interactive_editor (0.0.10)
+      spoon (>= 0.0.1)
     jbuilder (1.5.1)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -209,6 +212,8 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    spoon (0.0.4)
+      ffi
     sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -256,6 +261,7 @@ DEPENDENCIES
   exception_notification (~> 4.0.1)
   factory_girl_rails
   heroku (~> 2.24.0)
+  interactive_editor
   jbuilder (~> 1.2)
   jquery-rails
   mysql2

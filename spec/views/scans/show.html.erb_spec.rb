@@ -13,6 +13,6 @@ describe "scans/show" do
     render
     expect(rendered).to match(/@example.com/)
     expect(rendered).to match(/Generic 10mg \(Brand\)/)
-    expect(rendered).to match(/EST/)
+    expect(rendered).to match(/#{@scan.created_at.strftime(Date::DATE_FORMATS[:date_time])}/)
   end
 end

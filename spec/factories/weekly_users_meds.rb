@@ -24,11 +24,11 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
 FactoryGirl.define do
-  factory :users_med do
+  factory :weekly_users_med do
     user_id 1
     med_id 1
-    freq "before"
-    freq_unit ['dinner']
+    freq "weekly"
+    freq_unit ['0', '1']
     start "2013-12-08"
     first_dose  Time.now
     window 5

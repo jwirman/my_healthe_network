@@ -1,7 +1,7 @@
 <%= content_for :javascript do %>
   <% javascript_tag do %>
     $(function() {
-      new window.Medlist.CustomFrequency();
+      new window.Medlist.CustomFrequency({id: "<%= @users_med.id %>"});
       window.Medlist.datePicker();
     });
   <% end %>
@@ -13,10 +13,10 @@
   <div class="form-inputs">
     <%= f.input :med_id, label: 'Name of medication', collection: Med.all %>
     <%= f.input :num_per_dose, label: 'How many <br/> (if tablet/capsule)' %>
-    <%= f.input :freq, label: 'How often', collection: Med::FREQUENCIES %>
-    <%= f.input :freq_unit, label: 'When', collection: Med::FREQUENCY_UNITS, required: true %>
+    <%= f.input :freq, disabled: controller.action_name == 'edit', label: 'How often', collection: Med::FREQUENCIES, hint: 'can not edit once set' %>
+    <%= f.input :freq_unit, label: 'When', collection: [], wrapper_html: {style: "display: none"} %>
     <p>What time(s) would you ideally like to take your dose(s) on the days you need to take your medication?</p>
-    <%= f.input :first_dose,  ampm: true, minute_step: 5, include_blank: true %>
+    <%= f.input :first_dose,  ampm: true, minute_step: 5, include_blank: true, label: 'Dose time' %>
     <%= f.input :second_dose, ampm: true, minute_step: 5, include_blank: true, wrapper_html: {style: "display: none"} %>
     <%= f.input :third_dose,  ampm: true, minute_step: 5, include_blank: true, wrapper_html: {style: "display: none"} %>
     <%= f.input :fourth_dose, ampm: true, minute_step: 5, include_blank: true, wrapper_html: {style: "display: none"} %>

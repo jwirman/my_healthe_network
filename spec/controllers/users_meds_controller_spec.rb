@@ -149,6 +149,7 @@ describe UsersMedsController do
       before :each do
         sign_in
         @users_med = stub_model(UsersMed)
+        @users_med.user_id = 1
         UsersMed.should_receive(:find).with('1').and_return @users_med
       end
 

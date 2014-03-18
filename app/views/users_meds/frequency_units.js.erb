@@ -1,1 +1,13 @@
-$('#users_med_freq_unit').html("<%= escape_javascript(options_for_select(@units)) %>");
+<% case @freq %>
+<% when /weekly/ %>
+  $('div[class$=users_med_freq_unit]').html("<%=j render 'weekdays' %>");
+  $('div[class$=users_med_freq_unit]').show();
+<% when /monthly/ %>
+  $('div[class$=users_med_freq_unit]').html("<%=j render 'days_of_month' %>");
+  $('div[class$=users_med_freq_unit]').show();
+<% when /before|after/ %>
+  $('div[class$=users_med_freq_unit]').html("<%=j render 'meal_select' %>");
+  $('div[class$=users_med_freq_unit]').show();
+<% else %>
+  $('div[class$=users_med_freq_unit]').hide();
+<% end %>

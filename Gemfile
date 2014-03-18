@@ -10,6 +10,8 @@ gem 'heroku', '~> 2.24.0'
 gem 'jquery-rails'
 gem 'mysql2'
 gem 'pg'
+#gem 'recurring_select'
+#gem 'recurring_select', github: 'dam/recurring_select', branch: 'add_hourly_and_minutely_rules'
 gem 'simple_form', '~> 3.0.0'
 gem 'simple-navigation', '~> 3.11.0'
 gem 'turbolinks'
@@ -48,6 +50,7 @@ end
 group :development do
   gem 'factory_girl_rails' # needed in dev group for fixture replacement
   gem 'awesome_print'
+  gem 'interactive_editor'
   gem 'annotate', '~> 2.6.0'
 end
 

@@ -17,7 +17,7 @@ class UsersMedsController < ApplicationController
   end
 
   def create
-    @users_med = UsersMed.new(users_med_params)
+    @users_med = UsersMed.new_based_on_freq_type(users_med_params)
     @users_med.user_id = current_user.id
 
     respond_to do |format|
@@ -31,7 +31,7 @@ class UsersMedsController < ApplicationController
 
   def update
     respond_to do |format|
-      if @users_med.update(users_med_params)
+      if @users_med.update(send @users_med.class.name.underscore+'_params')
         format.html { redirect_to users_meds_path, notice: 'Medication was successfully updated.' }
       else
         format.html { render action: 'edit' }
@@ -48,7 +48,8 @@ class UsersMedsController < ApplicationController
 
   # ajax call
   def frequency_units
-    @units = Med.units_from_freq(params[:freq])
+    @freq = params[:freq]
+    set_users_med unless params[:id].blank?
   end
 
   private
@@ -59,6 +60,18 @@ class UsersMedsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def users_med_params
-      params.require(:users_med).permit(:med_id, :freq, :freq_unit, :num_per_dose, :start, :num_doses, :first_dose, :second_dose, :third_dose, :fourth_dose, :fifth_dose, :sixth_dose, :window)
+      params.require(:users_med).permit(:med_id, :freq, :freq_unit, {freq_unit: []}, :num_per_dose, :start, :num_doses, :first_dose, :second_dose, :third_dose, :fourth_dose, :fifth_dose, :sixth_dose, :window)
+    end
+    def hourly_users_med_params
+      params.require(:hourly_users_med).permit(:med_id, :freq, :num_per_dose, :start, :num_doses, :first_dose, :window)
+    end
+    def daily_users_med_params
+      params.require(:daily_users_med).permit(:med_id, :freq, :num_per_dose, :start, :num_doses, :first_dose, :second_dose, :third_dose, :fourth_dose, :fifth_dose, :sixth_dose, :window)
+    end
+    def weekly_users_med_params
+      params.require(:weekly_users_med).permit(:med_id, :freq, {freq_unit: []}, :num_per_dose, :start, :num_doses, :first_dose, :window)
+    end
+    def monthly_users_med_params
+      params.require(:monthly_users_med).permit(:med_id, :freq, {freq_unit: []}, :num_per_dose, :start, :num_doses, :first_dose, :window)
     end
 end

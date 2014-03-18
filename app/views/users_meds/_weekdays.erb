@@ -1,0 +1,7 @@
+<% Med::FREQUENCY_UNITS_DAYS.each_with_index do |day, i| %>
+  <% if @users_med %>
+    <label><%=day%></label><%= check_box_tag 'weekly_users_med[freq_unit][]', i, @users_med.freq_unit.include?(i.to_s) %>
+  <% else %>
+    <label><%=day%></label><%= check_box_tag 'users_med[freq_unit][]', i %>
+  <% end %>
+<% end %>
