@@ -1,4 +1,3 @@
-
 {<img src="https://coveralls.io/repos/jwirman/my_healthe_network/badge.png" alt="Coverage Status" />}[https://coveralls.io/r/jwirman/my_healthe_network]
 
 * Ruby version
